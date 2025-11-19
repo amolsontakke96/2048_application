@@ -24,10 +24,15 @@ phases:
       - echo "Pushing Docker image..."
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:latest
       - echo "Creating imagedefinitions.json..."
-      - printf '[{"name":"%s","image":"%s"}]' \
-          "$CONTAINER_NAME" \
-          "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:latest" \
-          > imagedefinitions.json
+      - |
+        cat > imagedefinitions.json <<EOF
+        [
+          {
+            "name": "$CONTAINER_NAME",
+            "image": "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:latest"
+          }
+        ]
+        EOF
 
 artifacts:
   files:
