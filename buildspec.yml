@@ -5,6 +5,7 @@ env:
     AWS_ACCOUNT_ID: "156331626410"
     AWS_DEFAULT_REGION: "us-east-1"
     ECR_REPO_NAME: "demo-2049"
+    CONTAINER_NAME: "demo-container"
 
 phases:
   pre_build:
@@ -22,7 +23,11 @@ phases:
     commands:
       - echo "Pushing Docker image..."
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:latest
-      - printf '{"tag":"%s"}' $IMAGE_TAG > imagedefinitions.json
+      - echo "Creating imagedefinitions.json..."
+      - printf '[{"name":"%s","image":"%s"}]' \
+          "$CONTAINER_NAME" \
+          "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:latest" \
+          > imagedefinitions.json
 
 artifacts:
   files:
