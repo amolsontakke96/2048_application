@@ -22,7 +22,7 @@ phases:
     commands:
       - echo "Pushing Docker image..."
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:latest
-      - printf '{"tag":"%s"}' $IMAGE_TAG > imageDetail.json
+      - printf '{"tag":"%s"}' $IMAGE_TAG > imagedefinitions.json
 
 artifacts:
   files:
