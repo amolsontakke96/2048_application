@@ -25,11 +25,11 @@ phases:
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:latest
       - echo "Creating imagedefinitions.json..."
       - |
-        cat <<EOF > imagedefinitions.json
+        cat > imagedefinitions.json <<EOF
         [
           {
             "name": "demo-container",
-            "image": "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/demo-2049:latest"
+            "image": "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:latest"
           }
         ]
         EOF
