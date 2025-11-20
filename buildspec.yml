@@ -37,6 +37,7 @@ phases:
       - cat imagedefinitions.json
 
 artifacts:
+  type: zip
   files:
     - imagedefinitions.json
   discard-paths: yes
