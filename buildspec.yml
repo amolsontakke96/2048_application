@@ -33,3 +33,4 @@ artifacts:
   files:
     - imagedefinitions.json
   discard-paths: yes
+  base-directory: .
