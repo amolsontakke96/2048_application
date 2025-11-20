@@ -27,6 +27,7 @@ phases:
       - printf '[{"name":"demo-container","image":"%s"}]' "$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/demo-2049:latest" > imagedefinitions.json
       - echo "Generated imagedefinitions.json:"
       - cat imagedefinitions.json
+      - ls -R
 
 artifacts:
   files:
