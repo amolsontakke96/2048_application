@@ -29,6 +29,3 @@ phases:
       - cat imagedefinitions.json
       - ls -R
 
-artifacts:
-  files:
-    - imagedefinitions.json
